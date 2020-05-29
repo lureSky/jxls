@@ -1,0 +1,27 @@
+
+server:
+  port: 8889
+
+logging:
+  level:
+    com:
+      martin: debug
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.0.234:3306/general_control_2?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maxLifetime: 1765000 #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒以上
+      maximumPoolSize: 15 #连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
+
+#MyBatis配置
+
+mybatis:
+  mapper-locations: classpath*:mappers/*.xml
+
+#tk配置
+mapper:
+  enum-as-simple-type: true
